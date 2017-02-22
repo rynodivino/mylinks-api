@@ -1,0 +1,33 @@
+{
+  "name": "mylinks-api",
+  "version": "1.0.0",
+  "description": "super simple api for creating link shortcuts",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "redis": "^2.6.5",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.0",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "husky": "^0.13.1"
+  },
+  "scripts": {
+    "lint": "eslint **/*.js; eslint *.js",
+    "precommit": "eslint **/*.js; eslint *.js",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rynodivino/mylinks.git"
+  },
+  "author": "rynodivino",
+  "license": "(MIT)",
+  "bugs": {
+    "url": "https://github.com/rynodivino/mylinks/issues"
+  },
+  "homepage": "https://github.com/rynodivino/mylinks#readme"
+}
