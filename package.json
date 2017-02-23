@@ -13,12 +13,16 @@
     "eslint": "^3.16.0",
     "eslint-config-airbnb-base": "^11.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "husky": "^0.13.1"
+    "husky": "^0.13.1",
+    "mockery": "^2.0.0",
+    "sinon": "^1.17.7",
+    "tap": "^10.2.0"
   },
   "scripts": {
+    "cover": "tap tests/unit/**.js -- --cov --coverage-report=lcov -t 5",
     "lint": "eslint **/*.js; eslint *.js",
     "precommit": "eslint **/*.js; eslint *.js",
-    "test": "npm test"
+    "test": "tap tests/unit/**/*.js -t 5"
   },
   "repository": {
     "type": "git",
