@@ -35,7 +35,7 @@ test('Test redirect route', (t) => {
         tt.ok(res.send.called);
     });
 
-    test('Test redirect miss (no id).', (tt) => {
+    test('Test redirect miss (no url).', (tt) => {
         tt.plan(3);
         const req = {
             url: 'http://whatever.com' 

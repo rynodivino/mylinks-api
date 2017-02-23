@@ -19,7 +19,7 @@
     "tap": "^10.2.0"
   },
   "scripts": {
-    "cover": "tap tests/unit/**.js -- --cov --coverage-report=lcov -t 5",
+    "cover": "tap tests/unit/**/*.js -- --cov --coverage-report=lcov",
     "lint": "eslint **/*.js; eslint *.js",
     "precommit": "eslint **/*.js; eslint *.js",
     "test": "tap tests/unit/**/*.js -t 5"
