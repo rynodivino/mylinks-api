@@ -1,12 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const routes = require('./routes');
 const log = require('winston');
-const app = express();
+const server = require('./server');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json()); 
-app.use('/', routes);
-app.listen(3000, function () {
+server.listen(3000, function () {
     log.info('Example app listening on port 3000!');
 });
