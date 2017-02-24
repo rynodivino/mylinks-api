@@ -1,7 +1,7 @@
 module.exports = {
     createClient: () => {
         return {
-            del: ()=>{
+            del: (key, cb)=>{
                 cb(null, true); 
             },
             get: ()=>{},
@@ -12,9 +12,11 @@ module.exports = {
                         data:{},
                         msg: 'Success'
                     });
+                } else {
+                    cb();
                 }
             },
-            hdel: ()=>{
+            hdel: (hash, key, cb)=>{
                 cb(null, true); 
             },
             hset: ()=>{},
