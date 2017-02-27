@@ -1,9 +1,4 @@
 'use strict';
-module.exports = (client, id, cb) => {
-    if (client && id && cb) {
-        return client.get(id, cb);
-    }
-};
 
 const fetch = require('../../../api/fetch-link');
 const t = require('tap');
