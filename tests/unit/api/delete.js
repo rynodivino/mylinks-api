@@ -1,7 +1,6 @@
-const mockery = require('mockery');
 const redisMock = require('../../mocks/redisClient');
-const tap = require('tap');
-const test = tap.test;
+const sinon = require('sinon');
+const t = require('tap');
 
 /**
  *
@@ -42,16 +41,43 @@ module.exports = (req, res, redisClient) => {
 };
 */
 
-test('Ryan is a sucker', (t) => {
-    mockery.enable({
-        warnOnReplace: false,
-        warnOnUnregistered: false
-    });
-    mockery.registerMock('redis', redisMock);
-    let rest = require('../../../api/rest');
+let del, json, req, res, stub;
 
-    t.plan(3);
-    t.ok(rest.del);
-    t.ok(rest.post);
-    t.ok(rest.put);
+t.beforeEach((done)=>{
+    json = sinon.spy();
+    stub = sinon.stub();
+    stub.returns({json});
+    req = {
+        body: {
+            id: 'blah',
+            owner: 'me'
+        }
+    };
+    res = {
+        end: sinon.spy(),
+        send: sinon.spy(),
+        status: stub
+    };
+    del = require('../../../api/delete');
+    done();
+});
+
+t.plan(2);
+
+t.test('delete 400\'s is missing id.', function (tt) {
+    tt.plan(3);
+    req.body.id = null;
+    del(req, res, redisMock);
+    tt.ok(res.status.calledWith(400));
+    tt.ok(json.calledWith({message:'Missing required parameters.' }));
+    tt.ok(res.end.called);
+});
+
+t.test('delete 400\'s is missing owner.', function (tt) {
+    tt.plan(3);
+    req.body.owner = null;
+    del(req, res, redisMock);
+    tt.ok(res.status.calledWith(400));
+    tt.ok(json.calledWith({message:'Missing required parameters.' }));
+    tt.ok(res.end.called);
 });
