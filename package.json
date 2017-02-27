@@ -20,10 +20,10 @@
     "tap": "^10.2.0"
   },
   "scripts": {
-    "cover": "tap tests/unit/**/*.js -- --cov --coverage-report=lcov",
+    "cover": "tap tests/unit/*.js tests/unit/**/*.js -- --cov --coverage-report=lcov",
     "lint": "eslint **/*.js; eslint *.js",
     "precommit": "eslint **/*.js; eslint *.js",
-    "test": "tap tests/unit/**/*.js -t 5"
+    "test": "tap tests/unit/*.js tests/unit/**/*.js -t 5"
   },
   "repository": {
     "type": "git",
