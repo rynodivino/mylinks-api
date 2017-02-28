@@ -20,7 +20,7 @@ t.plan(2);
 
 t.test('Existing user is returned.', function (tt) {
     request(app)
-    .get('/owner/pma')
+    .get('/owners/pma')
     .expect('Content-Type', /json/)
     .expect(200)
     .end(function (err, res) {
@@ -32,7 +32,7 @@ t.test('Existing user is returned.', function (tt) {
 
 t.test('Non-existing user 401.', function (tt) {
     request(app)
-    .get('/owner/batman')
+    .get('/owners/batman')
     .expect('Content-Type', /json/)
     .expect(401)
     .end(function (err, res) {

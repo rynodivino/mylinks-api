@@ -8,15 +8,15 @@ const getCallback = (req, res, client) => {
             const link = JSON.parse(data);
             if (link.owner === req.body.owner) {
                 client.set(link.id, JSON.stringify(req.body));
-                res.status(200).json({msg: 'Success'});
+                res.status(200).json({message: 'Success'});
             } else {
                 res.status(401).json({
-                    msg: 'Failed.  Only owner can update this link.'
+                    message: 'Failed.  Only owner can update this link.'
                 });
             }
         } else {
             res.status(401).json({
-                msg: 'Failed.  Link does not exist.'
+                message: 'Failed.  Link does not exist.'
             });
         }
         return res.end();
@@ -24,11 +24,14 @@ const getCallback = (req, res, client) => {
 };
 
 // Add url validation
-module.exports = (req, res, client) => {
-    if (!req.body.id || !req.body.owner) {
-        // reject
-    }
+module.exports = {
+    put: (req, res, client) => {
+        if (!req.params.id || !req.params.owner) {
+            return res.status(401).send('Missing required parameters.');
+        }
 
-    const cb = getCallback(req, res, client);
-    fetchLink(client, req.body.id, cb);
+        const cb = getCallback(req, res, client);
+        return fetchLink(client, req.body.id, cb);
+    },
+    getCallback
 };

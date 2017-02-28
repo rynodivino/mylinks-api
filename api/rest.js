@@ -1,6 +1,6 @@
 const del = require('./delete');
 const post = require('./post');
-const put = require('./put');
+const put = require('./put').put;
 const redis = require('redis');
 const redisClient = redis.createClient();
 

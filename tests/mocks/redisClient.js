@@ -20,7 +20,7 @@ module.exports = {
                 cb(null, true); 
             },
             hset: ()=>{},
-            set: ()=>{}
-        }
+            set: (k,v)=>{}
+        };
     }
 };

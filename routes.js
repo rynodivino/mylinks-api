@@ -18,11 +18,11 @@ routes.param('id', (req, res, next, id) => {
 });
 
 // Redirect route (move to web app).
-routes.get('/redirect/:id', redirect);
+routes.get('/redirects/:id', redirect);
 
 // Simple api for crud operations.
 
-routes.get('/owner/:owner', (req, res) => {
+routes.get('/owners/:owner', (req, res) => {
     if (req.owner) {
         res.status(200).json({
             data: req.owner,
@@ -52,9 +52,9 @@ routes.param('owner', (req, res, next, owner) => {
 });
 
 // CRUD (-R)
-routes.post('*', api.post);
-routes.put('*', api.put);
-routes.delete('*', api.del);
+routes.post('/owners/:owner/links/:id', api.post);
+routes.put('/owners/:owner/links/:id', api.put);
+routes.delete('/owners/:owner/links/:id', api.del);
 routes.get('*', (req, res) => {
     res.status(404).json({
         message: 'Page does not exist.'
