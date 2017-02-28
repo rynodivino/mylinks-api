@@ -1,10 +1,12 @@
+const sinon = require('sinon');
+
 module.exports = {
     createClient: () => {
         return {
             del: (key, cb)=>{
                 cb(null, true); 
             },
-            get: ()=>{},
+            get: sinon.spy(), 
             het: ()=>{},
             hgetall: (o, cb) => {
                 if (o === 'pma') {
