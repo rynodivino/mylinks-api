@@ -3,3 +3,4 @@
 simple api for link shortcuts
 
 Requires redis, your own dns+dhcp servers.  Instructions to follow.
+pr test
