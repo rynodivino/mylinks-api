@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/rynodivino/mylinks/issues"
   },
-  "homepage": "https://github.com/rynodivino/mylinks#readme"
+  "homepage": "https://github.com/rynodivino/mylinks#readme",
+  "nyc": {
+    "include": ["api/**","routes/**","*.js"]
+  }
 }
