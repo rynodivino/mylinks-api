@@ -17,13 +17,14 @@
     "mockery": "^2.0.0",
     "sinon": "^1.17.7",
     "supertest": "^3.0.0",
-    "tap": "^10.2.0"
+    "tap": "^10.2.2"
   },
   "scripts": {
-    "cover": "tap tests/unit/*.js tests/unit/**/*.js --coverage",
+    "cover": "tap tests/unit/*.js tests/unit/**/*.js --coverage --coverage-report=html",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "lint": "eslint **/*.js; eslint *.js",
     "precommit": "eslint **/*.js; eslint *.js",
-    "test": "tap tests/unit/*.js tests/unit/**/*.js -t 5"
+    "test": "tap tests/unit/*.js tests/unit/**/*.js --coverage --coverage-report=html"
   },
   "repository": {
     "type": "git",
