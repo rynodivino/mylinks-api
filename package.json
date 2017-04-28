@@ -10,6 +10,8 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-preset-es2017": "^6.22.0",
     "eslint": "^3.16.0",
     "eslint-config-airbnb-base": "^11.1.0",
     "eslint-plugin-import": "^2.2.0",
@@ -20,8 +22,8 @@
     "tap": "^10.2.2"
   },
   "scripts": {
-    "cover": "tap tests/unit/*.js tests/unit/**/*.js --coverage --coverage-report=html",
-    "coverage": "./node_modules/nyc/bin/nyc.js npm test && ./node_modules/nyc/bin/nyc.js report --reporter=text-lcov | ./node_modules/coveralls/bin/coveralls.js",
+    "cover": "tap tests/unit/*.js tests/unit/**/*.js --coverage --coverage-reporter=lcov",
+    "coverage": "NODE_ENV=test ./node_modules/nyc/bin/nyc.js --reporter=lcov npm test | ./node_modules/.bin/coveralls",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "lint": "eslint **/*.js; eslint *.js",
     "precommit": "eslint **/*.js; eslint *.js",
@@ -36,8 +38,5 @@
   "bugs": {
     "url": "https://github.com/rynodivino/mylinks/issues"
   },
-  "homepage": "https://github.com/rynodivino/mylinks#readme",
-  "nyc": {
-    "include": ["api/**","routes/**","*.js"]
-  }
+  "homepage": "https://github.com/rynodivino/mylinks#readme"
 }
